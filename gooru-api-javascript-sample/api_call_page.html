@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8 />
+		<title>Welcome Page</title>
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<script src="js/jquery.1.9.1.min.js"></script>
+		<script src="js/index.js"></script>
+		<script>
+			function loadPage(apiName){
+			    $("li.listContent").css("background-color", "rgb(240,240,240)");
+			    if(apiName == "createCollection"){
+			    
+			      $("#create-collection").css("background-color", "white");
+			      $( "#mainContent" ).load( "create_collection.html" );
+			    }
+			    else if (apiName == "createResource"){
+				$( "#mainContent" ).load( "create_resource.html" );
+				$('#create-resource').css("background-color", "white");
+			    }
+			    else if (apiName == "playCollection"){
+				$( "#mainContent" ).load( "play_collection.html" );
+				$('#play-collection').css("background-color", "white");
+			    }
+			    else if (apiName == "searchResource"){
+				$( "#mainContent" ).load( "search_resource.html" );
+				$('#search-resource').css("background-color", "white");
+			    }
+			    else{
+				alert("Specify correct Name");
+			    }
+			}
+		</script>
+		<style>
+		  .loader{
+		      top: 50%;
+		      left: 50%;
+		      position: fixed;
+		      padding: 10px;
+		      display: none;
+		  }
+		</style>
+	</head>
+	<body>
+		<div id="mainContainer">
+			<div class="subContainer" style="float:left;">
+				<div class="menu">
+				    <ul type="none" class="tabs" >
+					<li id="search-resource" class="listContent" onclick="loadPage('searchResource')">Search Resource</li>
+					<li id="create-collection" class="listContent" onclick="loadPage('createCollection')">Create Collection</li>
+					<li id="create-resource" class="listContent" onclick="loadPage('createResource')">Create Resource</li>
+					<li id="play-collection" class="listContent" onclick="loadPage('playCollection')">Fetch Collection</li>
+				    </ul>
+				</div>
+			</div>
+			<div class="subContainer" style="float:left; width:5px; background-color: darkgrey;">
+			<div id="token"><input type="hidden" class="tokenValue" value=""><br></div>
+			</div>
+			<div class="subContainer">
+				<div  id="mainContent"></div>
+			</div>
+		</div>
+		<div class="loader"><img src="image/loading.gif"/></div>
+	</body>
+</html>
+
+    <script>
+
+	$(document).ready(function() {
+	    
+	    var token = getUrlParameter('token');
+	    var body = document.body,
+			  html = document.documentElement;
+	    
+			  var height_new = Math.max( body.scrollHeight, body.offsetHeight, 
+					   html.clientHeight, html.scrollHeight, html.offsetHeight );
+	    $(".subContainer").height(height_new);
+	    $(".menu").height(height_new);
+	    $(".tokenValue").val(token);
+	    loadPage('searchResource');
+	});
+    
+	function getUrlParameter(sParam)
+	{
+	    var sPageURL = window.location.search.substring(1);
+	    var sURLVariables = sPageURL.split('&');
+	    for (var i = 0; i < sURLVariables.length; i++) 
+	    {
+		var sParameterName = sURLVariables[i].split('=');
+		if (sParameterName[0] == sParam) 
+		{
+		    return sParameterName[1];
+		}
+	    }
+	}   	
+    
+    </script>

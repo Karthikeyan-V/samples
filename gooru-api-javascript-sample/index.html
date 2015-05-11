@@ -1,0 +1,40 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Login Form </title>
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<script src="js/jquery.1.9.1.min.js"></script>
+		<script src="js/index.js"></script>
+		<meta name="robots" content="noindex,follow" />
+		<style>
+		  .loader{
+		      top: 50%;
+		      left: 50%;
+		      position: fixed;
+		      padding: 10px;
+		      display: none;
+		  }		  
+		</style>
+	</head>
+	<body>
+		<div id="login-form-id" class="login-form">
+			<div style="background-color: #4e9746;width: 569px;padding-left: 0px;margin-left: -179px;text-align: -webkit-center;"><h1>Login Form</h1></div>
+			<form action="#">
+				<input type="text" name="username" id="username" placeholder="username" required>
+				<span class="login-after">*</span><br>
+				<input type="password" name="password" id="password" placeholder="password" required>
+				<span class="login-after">*</span><br>
+				<input type="text" name="apikey" class="apikey" placeholder="API KEY" required>
+				<label><span class="login-after">*</span></label><br>
+				<div class="button-style" style="padding-left:25px">
+				    <input type="button" class="loginButton" data-flag="login" style="margin: 10px 0px 15px 15px;" value="Log In">
+				    <input type="button" value="Go Next" class="goNext" onclick="parent.location='api_call_page.html'" style="margin: 10px 0px 15px 15px;">
+				    <input type="hidden" class="sToken" value="">
+				</div>
+				<a class="download-link" href="http://devapi.goorulearning.org/doc/samples/gooru-api-explorer.zip" download>Download this Sample</a>
+			</form>
+		</div><br>
+		<div class="loader"><img src="image/loading.gif"/></div>
+		<div id="login-response" class="response-data"> </div><br>
+	</body>
+</html>

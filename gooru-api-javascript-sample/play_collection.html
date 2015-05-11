@@ -1,0 +1,38 @@
+<script src="js/index.js"></script>
+<div class="cellContainer">
+	<div id="play-collection-id" class="login-form">
+		<h1 style="margin-left: -179px;">Play Collection</h1>
+		<form action="#">
+			<input type="text" name="collectionId" class="playCollection_collectionId" placeholder="Collection Id" required><span class="after">*</span>
+			<input type="text" name="sessionToken" class="playCollection_sessionToken" placeholder="Session Token"><span class="after"  name="token">*</span><br>
+			<input type="checkbox" class="defaultSessionToken" checked> Use default Sesion Token<br>
+			<div class="button-style" style="padding-left:10px">
+			    <input type="button" class="submitButton" data-flag="playCollection" style="margin: 10px 0px 15px 80px; width:100px;" value="Submit">
+			</div>			
+			<a class="download-link" href="http://devapi.goorulearning.org/doc/samples/gooru-api-explorer.zip" download>Download this Sample</a>
+		</form>
+	</div>
+	<div id="collection-play-api-response" class="response-data"> </div>
+</div>
+<script>
+            $(document).ready(function() {
+		if ($(".defaultSessionToken").is(":checked")) {
+		    $("input[name='sessionToken']").hide();
+		    $("span[name='token']").hide();
+		}
+		else {
+		    $("input[name='sessionToken']").show();
+		}
+		$(".defaultSessionToken").click(function() {
+		    if (!$(this).is(':checked')) {
+			$("input[name='sessionToken']").show();
+			$("span[name='token']").show();
+		    }
+		    if ($(this).is(":checked")) {
+			$("input[name='sessionToken']").hide();
+			$("span[name='token']").hide();
+		    }
+		});
+	    });
+
+</script>
